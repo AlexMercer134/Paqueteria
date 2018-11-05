@@ -1,0 +1,55 @@
+﻿@page
+@model Paqueteria.Pages.Aplicaciones.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Aplicacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Aplicacion.NombreApp)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Aplicacion.NombreApp)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Aplicacion.DescripcionApp)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Aplicacion.DescripcionApp)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Aplicacion.DetalleApp)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Aplicacion.DetalleApp)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Aplicacion.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Aplicacion.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Aplicacion.FinalDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Aplicacion.FinalDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Aplicacion.EstatusID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Aplicacion.EstatusID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Aplicacion.AplicacionID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

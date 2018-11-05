@@ -31,7 +31,7 @@ namespace Paqueteria.Models
         [Display(Name = "Estatus")]
         public int EstatusID { get; set; }
 
-        public ICollection<AplicacionPaquete> AplicacionPaquetes { get; set; }
-        public  Estatus Estatus { get; set; }
+        //public ICollection<AplicacionPaquete> AplicacionPaquetes { get; set; }
+        //public  Estatus Estatus { get; set; }
     }
 }
