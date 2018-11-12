@@ -1,0 +1,66 @@
+﻿@page
+@model Paqueteria.Pages.Incidencias.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Incidencia[0].NombreIc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Incidencia[0].DescripcionIc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Incidencia[0].StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Incidencia[0].FinaltDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Incidencia[0].Paquete)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Incidencia[0].Estados)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Incidencia) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreIc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionIc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinaltDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paquete.NombrePck)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estados.NombreEdo)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IncidenciaID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.IncidenciaID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IncidenciaID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,58 @@
+﻿@page
+@model Paqueteria.Pages.Paquetes.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Paquete</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Paquete.NombrePck" class="control-label"></label>
+                <input asp-for="Paquete.NombrePck" class="form-control" />
+                <span asp-validation-for="Paquete.NombrePck" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Paquete.DescripcionPck" class="control-label"></label>
+                <input asp-for="Paquete.DescripcionPck" class="form-control" />
+                <span asp-validation-for="Paquete.DescripcionPck" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Paquete.DetallePck" class="control-label"></label>
+                <input asp-for="Paquete.DetallePck" class="form-control" />
+                <span asp-validation-for="Paquete.DetallePck" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Paquete.StartDate" class="control-label"></label>
+                <input asp-for="Paquete.StartDate" class="form-control" />
+                <span asp-validation-for="Paquete.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Paquete.FinalDate" class="control-label"></label>
+                <input asp-for="Paquete.FinalDate" class="form-control" />
+                <span asp-validation-for="Paquete.FinalDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Paquete.EstadoID" class="control-label"></label>
+                <select asp-for="Paquete.EstadoID" class ="form-control" asp-items="ViewBag.EstadoID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

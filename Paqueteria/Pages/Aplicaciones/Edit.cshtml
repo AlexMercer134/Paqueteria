@@ -1,0 +1,60 @@
+﻿@page
+@model Paqueteria.Pages.Aplicaciones.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Aplicacion</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Aplicacion.AplicacionID" />
+            <div class="form-group">
+                <label asp-for="Aplicacion.NombreApp" class="control-label"></label>
+                <input asp-for="Aplicacion.NombreApp" class="form-control" />
+                <span asp-validation-for="Aplicacion.NombreApp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aplicacion.DescripcionApp" class="control-label"></label>
+                <input asp-for="Aplicacion.DescripcionApp" class="form-control" />
+                <span asp-validation-for="Aplicacion.DescripcionApp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aplicacion.DetalleApp" class="control-label"></label>
+                <input asp-for="Aplicacion.DetalleApp" class="form-control" />
+                <span asp-validation-for="Aplicacion.DetalleApp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aplicacion.StartDate" class="control-label"></label>
+                <input asp-for="Aplicacion.StartDate" class="form-control" />
+                <span asp-validation-for="Aplicacion.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aplicacion.FinalDate" class="control-label"></label>
+                <input asp-for="Aplicacion.FinalDate" class="form-control" />
+                <span asp-validation-for="Aplicacion.FinalDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aplicacion.EstadoID" class="control-label"></label>
+                <input asp-for="Aplicacion.EstadoID" class="form-control" />
+                <span asp-validation-for="Aplicacion.EstadoID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

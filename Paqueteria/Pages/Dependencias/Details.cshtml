@@ -1,0 +1,49 @@
+﻿@page
+@model Paqueteria.Pages.Dependencias.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Dependencia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Dependencia.NombreDpd)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dependencia.NombreDpd)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dependencia.DescripcionDpd)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dependencia.DescripcionDpd)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dependencia.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dependencia.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dependencia.FinaltDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dependencia.FinaltDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dependencia.Estados)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dependencia.Estados.EstadoID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Dependencia.DependenciaID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

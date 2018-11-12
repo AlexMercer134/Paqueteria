@@ -1,0 +1,52 @@
+﻿@page
+@model Paqueteria.Pages.Dependencias.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Dependencia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Dependencia.NombreDpd)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dependencia.NombreDpd)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dependencia.DescripcionDpd)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dependencia.DescripcionDpd)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dependencia.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dependencia.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dependencia.FinaltDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dependencia.FinaltDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dependencia.Estados)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dependencia.Estados.EstadoID)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Dependencia.DependenciaID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

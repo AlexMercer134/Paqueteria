@@ -1,0 +1,55 @@
+﻿@page
+@model Paqueteria.Pages.Incidencias.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Incidencia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Incidencia.NombreIc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Incidencia.NombreIc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Incidencia.DescripcionIc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Incidencia.DescripcionIc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Incidencia.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Incidencia.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Incidencia.FinaltDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Incidencia.FinaltDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Incidencia.Paquete)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Incidencia.Paquete.NombrePck)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Incidencia.Estados)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Incidencia.Estados.EstadoID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Incidencia.IncidenciaID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

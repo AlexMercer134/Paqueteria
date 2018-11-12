@@ -1,0 +1,58 @@
+﻿@page
+@model Paqueteria.Pages.Incidencias.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Incidencia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Incidencia.NombreIc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Incidencia.NombreIc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Incidencia.DescripcionIc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Incidencia.DescripcionIc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Incidencia.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Incidencia.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Incidencia.FinaltDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Incidencia.FinaltDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Incidencia.Paquete)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Incidencia.Paquete.NombrePck)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Incidencia.Estados)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Incidencia.Estados.EstadoID)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Incidencia.IncidenciaID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
