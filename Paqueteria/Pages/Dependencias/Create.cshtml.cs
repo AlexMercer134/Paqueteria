@@ -9,7 +9,7 @@ using Paqueteria.Models;
 
 namespace Paqueteria.Pages.Dependencias
 {
-    public class CreateModel : PageModel
+    public class CreateModel : Estado1NamePageModel
     {
         private readonly Paqueteria.Models.PaqueteriaContext _context;
 
@@ -20,7 +20,8 @@ namespace Paqueteria.Pages.Dependencias
 
         public IActionResult OnGet()
         {
-        ViewData["EstadoID"] = new SelectList(_context.Estados, "EstadoID", "EstadoID");
+            PopulateEstadosDropDownList(_context);
+            //ViewData["EstadoID"] = new SelectList(_context.Estados, "EstadoID", "EstadoID");
             return Page();
         }
 
@@ -33,11 +34,16 @@ namespace Paqueteria.Pages.Dependencias
             {
                 return Page();
             }
+            var emptyDependencia = new Dependencia();
 
-            _context.Dependencias.Add(Dependencia);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            if (await TryUpdateModelAsync<Dependencia>(emptyDependencia, "dependencias", s=>s.NombreDpd,s=>s.DescripcionDpd,s => s.StartDate, s => s.FinaltDate, s => s.EstadoID))
+            {
+                _context.Dependencias.Add(emptyDependencia);//
+                await _context.SaveChangesAsync();//
+                return RedirectToPage("./Index");//
+            }
+            PopulateEstadosDropDownList(_context, emptyDependencia.EstadoID);
+            return Page();
         }
     }
 }

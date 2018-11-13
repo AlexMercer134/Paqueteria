@@ -36,7 +36,7 @@ namespace Paqueteria.Pages.Paquetes
             {
                 return NotFound();
             }
-           ViewData["EstadoID"] = new SelectList(_context.Estados, "EstadoID", "EstadoID");
+           ViewData["EstadoID"] = new SelectList(_context.Estados, "EstadoID", "NombreEdo");
             return Page();
         }
 

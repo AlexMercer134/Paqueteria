@@ -27,7 +27,7 @@ namespace Paqueteria.Pages.Dependencias
                 return NotFound();
             }
 
-            Dependencia = await _context.Dependencias
+            Dependencia = await _context.Dependencias.AsNoTracking()
                 .Include(d => d.Estados).FirstOrDefaultAsync(m => m.DependenciaID == id);
 
             if (Dependencia == null)

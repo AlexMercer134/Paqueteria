@@ -20,7 +20,7 @@ namespace Paqueteria.Pages.Incidencias
 
         public IActionResult OnGet()
         {
-        ViewData["EstadoID"] = new SelectList(_context.Estados, "EstadoID", "EstadoID");
+        ViewData["EstadoID"] = new SelectList(_context.Estados, "EstadoID", "NombreEdo");
         ViewData["PaqueteID"] = new SelectList(_context.Paquetes, "PaqueteID", "NombrePck");
             return Page();
         }

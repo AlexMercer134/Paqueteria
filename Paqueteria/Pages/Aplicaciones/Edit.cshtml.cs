@@ -10,7 +10,7 @@ using Paqueteria.Models;
 
 namespace Paqueteria.Pages.Aplicaciones
 {
-    public class EditModel : PageModel
+    public class EditModel : EstadoNamePageModel
     {
         private readonly Paqueteria.Models.PaqueteriaContext _context;
 
@@ -29,41 +29,31 @@ namespace Paqueteria.Pages.Aplicaciones
                 return NotFound();
             }
 
-            Aplicacion = await _context.Aplicacion.FirstOrDefaultAsync(m => m.AplicacionID == id);
+            Aplicacion = await _context.Aplicacion.Include(c=> c.Estados).FirstOrDefaultAsync(m => m.AplicacionID == id);
 
             if (Aplicacion == null)
             {
                 return NotFound();
             }
+            PopulateEstadosDropDownList(_context, Aplicacion.EstadoID);
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
-            _context.Attach(Aplicacion).State = EntityState.Modified;
-
-            try
+            var estadoToUpdate = await _context.Aplicacion.FindAsync(id);
+            if (await TryUpdateModelAsync<Aplicacion>(estadoToUpdate, "aplicacion", s => s.AplicacionID, s => s.NombreApp, s => s.DescripcionApp, s => s.DetalleApp, s => s.StartDate, s => s.FinalDate))
             {
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AplicacionExists(Aplicacion.AplicacionID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
+            PopulateEstadosDropDownList(_context, estadoToUpdate.EstadoID);
+            return Page();
         }
 
         private bool AplicacionExists(int id)

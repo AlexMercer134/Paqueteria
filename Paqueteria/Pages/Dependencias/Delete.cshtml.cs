@@ -28,7 +28,7 @@ namespace Paqueteria.Pages.Dependencias
                 return NotFound();
             }
 
-            Dependencia = await _context.Dependencias
+            Dependencia = await _context.Dependencias.AsNoTracking()
                 .Include(d => d.Estados).FirstOrDefaultAsync(m => m.DependenciaID == id);
 
             if (Dependencia == null)
@@ -45,7 +45,7 @@ namespace Paqueteria.Pages.Dependencias
                 return NotFound();
             }
 
-            Dependencia = await _context.Dependencias.FindAsync(id);
+            Dependencia = await _context.Dependencias.AsNoTracking().FirstOrDefaultAsync(m => m.DependenciaID == id);
 
             if (Dependencia != null)
             {

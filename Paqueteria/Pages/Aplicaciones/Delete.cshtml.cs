@@ -28,7 +28,7 @@ namespace Paqueteria.Pages.Aplicaciones
                 return NotFound();
             }
 
-            Aplicacion = await _context.Aplicacion.FirstOrDefaultAsync(m => m.AplicacionID == id);
+            Aplicacion = await _context.Aplicacion.AsNoTracking().Include(c => c.Estados).FirstOrDefaultAsync(m => m.AplicacionID == id);
 
             if (Aplicacion == null)
             {
@@ -44,7 +44,7 @@ namespace Paqueteria.Pages.Aplicaciones
                 return NotFound();
             }
 
-            Aplicacion = await _context.Aplicacion.FindAsync(id);
+            Aplicacion = await _context.Aplicacion.AsNoTracking().FirstOrDefaultAsync(m => m.AplicacionID == id);
 
             if (Aplicacion != null)
             {

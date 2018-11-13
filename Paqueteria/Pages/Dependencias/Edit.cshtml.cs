@@ -10,7 +10,7 @@ using Paqueteria.Models;
 
 namespace Paqueteria.Pages.Dependencias
 {
-    public class EditModel : PageModel
+    public class EditModel : Estado1NamePageModel
     {
         private readonly Paqueteria.Models.PaqueteriaContext _context;
 
@@ -36,36 +36,26 @@ namespace Paqueteria.Pages.Dependencias
             {
                 return NotFound();
             }
-           ViewData["EstadoID"] = new SelectList(_context.Estados, "EstadoID", "EstadoID");
+            //ViewData["EstadoID"] = new SelectList(_context.Estados, "EstadoID", "EstadoID");
+            PopulateEstadosDropDownList(_context, Dependencia.EstadoID);
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
-            _context.Attach(Dependencia).State = EntityState.Modified;
-
-            try
+            var dependenciaToUpdate = await _context.Dependencias.FindAsync(id);
+            if(await TryUpdateModelAsync<Dependencia>(dependenciaToUpdate, "dependencias", s => s.NombreDpd, s => s.DescripcionDpd, s => s.StartDate, s => s.FinaltDate, s => s.EstadoID))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!DependenciaExists(Dependencia.DependenciaID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
+            PopulateEstadosDropDownList(_context, dependenciaToUpdate.EstadoID);
+            return Page();
         }
 
         private bool DependenciaExists(int id)
